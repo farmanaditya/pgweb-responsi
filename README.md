@@ -4,7 +4,7 @@
 
 ## Deskripsi Produk
 
-Solo Heritage Spot adalah sebuah  WebGIS yang memudahkan pengguna dalam menemukan dan menjelajahi museum serta tempat bersejarah di kota Solo. Aplikasi ini memberikan informasi detail tentang lokasi-lokasi tersebut, termasuk deskripsi, jam operasional, dan fasilitas yang disediakan. Dengan menggunakan teknologi WebGIS, pengguna dapat merencanakan kunjungan mereka dengan lebih efisien dan interaktif.
+Solo Heritage Spot adalah  laman yang menampilkan indormasi museum serta tempat bersejarah di kota Solo. Websitei memberikan informasi detail tentang lokasi-lokasi tersebut, termasuk deskripsi, jam operasional, dan fasilitas yang disediakan. Solo Heritage Spot dibangun untuk memenuhi tugas responsi praktikum Pemrograman Geospasial Web
 
 ## Komponen Pembangun Produk
 
