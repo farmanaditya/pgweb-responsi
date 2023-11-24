@@ -69,6 +69,52 @@
             font-family: 'Arial', cursive;
             font-size: 20px;
         }
+
+        /* Body background color */
+        body {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+        /*Banner background color */
+        .ud-page-banner {
+            background-color: #1d4185;
+            color: #ffffff;
+        }
+
+        /* Navbar background color
+        .ud-header {
+            background-color: #1d4185;
+            color: #ffffff;
+        } */
+
+        /* Hero section background color */
+        .ud-hero {
+            background-color: #1d4185;
+            color: #ffffff;
+        }
+
+        /* Features section background color */
+        .ud-features {
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+
+        /* Button styles */
+        .ud-main-btn {
+            background-color: #2855a7;
+            color: #ffffff;
+        }
+
+        .ud-link-btn {
+            background-color: #2855a7;
+            color: #ffffff;
+        }
+
+        .ud-menu-scroll {
+            color: #c99a9a;
+        }
     </style>
 
 </head>
@@ -303,7 +349,9 @@
 
     <!-- Routing JS -->
     <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
     <script>
+
 
 
         var map = L.map('map').setView([-7.5695428175180535, 110.82978162977122], 12);
@@ -311,6 +359,12 @@
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
+
+        $.getJSON("wfsgeoserver.php", function (data) {
+            wfsgeoserver.addData(data);
+            map.addLayer(wfsgeoserver);
+            map.fitBounds(wfsgeoserver.getBounds());
+        });
 
         var lokananta = L.marker([-7.557465842318016, 110.79556075520473]).addTo(map);
         lokananta.bindPopup("<b>Museum Lokananta</b><br>Jl. Ahmad Yani no. 379, Kerten, Laweyan, Solo").openPopup();
@@ -330,7 +384,17 @@
         var batik = L.marker([-7.568442625408151, 110.81644668300208]).addTo(map);
         batik.bindPopup("<b>Museum Batik Danar Hadi</b><br>Jl. Slamet Riyadi No. 261, Purwosari, Laweyan, Solo").openPopup();
 
+        var astana = L.marker([-7.547094174617426, 110.82384966783033]).addTo(map);
+        astana.bindPopup("<b>Astana Oetara</b><br>Jl. Nayu, Nusukan, Banjarsari, Surakarta").openPopup();
 
+        var uns = L.marker([-7.556818236796318, 110.85974549481736]).addTo(map);
+        uns.bindPopup("<b>Museum UNS</b><br>Jl. Ir Sutami No.36A, Jebres, Jebres, Surakarta").openPopup();
+
+        var pers = L.marker([-7.564814376968936, 110.81836702919941]).addTo(map);
+        pers.bindPopup("<b>Monumen Pers Nasional</b><br>Jl. Gajahmada No.59, Timuran, Banjarsari, Surakarta").openPopup();
+
+        
+        // Basemap
         var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="DIVSIG UGM" target="_blank">DIVSIG UGM</a>'
         });
@@ -374,6 +438,44 @@
             maxWidth: 150, position: 'bottomright'
         }).addTo(map);
 
+        var wfsgeoserver = L.geoJson(null, {
+            pointToLayer: function (feature, latlng) {
+                return L.marker(latlng, {
+                    icon: L.icon({
+                        // iconUrl: "assets/img/icon/icon.png",
+                        iconSize: [32, 32],
+                        iconAnchor: [16, 32],
+                        popupAnchor: [0, -32],
+                        tooltipAnchor: [16, -20]
+                    })
+                });
+            },
+            onEachFeature: function (feature, layer) {
+                var content = "Kecamatan : " + feature.properties.kecamatan + "<br>" +
+                    // "Jumlah Penduduk : " + feature.properties.jumlah + "<br>"
+                    // "Jumlah Aktif : " + feature.properties.aktif + "<br>"
+                    // "Jumlah Sembuh : " + feature.properties.sembuh + "<br>"
+                    // "Jumlah Meninggal : " + feature.properties.meninggal + "<br>"
+               layer.on({
+                    click: function (e) {
+                        wfsgeoserver.bindPopup(content);
+                    },
+                    mouseover: function (e) {
+                        wfsgeoserver.bindTooltip(feature.properties.kecamatan);
+                    },
+                    mouseout: function (e) {
+                        wfsgeoserver.closePopup();
+                    }
+                });
+            }
+        });
+
+        $.getJSON("wfsgeoserver.php", function (data) {
+            wfsgeoserver.addData(data);
+            map.addLayer(wfsgeoserver);
+            // map.fitBounds(wfsgeoserver.getBounds());
+        });
+
     </script>
 </body>
 
@@ -382,7 +484,7 @@
 <script>
     var searchControl = new L.Control.Search({
         position: "topleft",
-        layer: wfsgeoserver1,
+        layer: wfsgeoserver,
         propertyName: "kecamatan",
         marker: false,
         moveToLocation: function (latlng, title, map) {
@@ -496,7 +598,7 @@
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="ud-widget">
                         <p class="ud-widget-desc">
-                            Solo Heritage Spot | © 2023 farmanaditya
+                            Solo Heritage Spot
                         </p>
                     </div>
                 </div>

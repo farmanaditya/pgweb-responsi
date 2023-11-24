@@ -17,18 +17,20 @@ Solo Heritage Spot adalah  laman yang menampilkan informasi museum serta tempat 
 ## Sumber Data
 
 - Data tentang museum dan tempat bersejarah diambil dari [pariwisatasolo.surakarta.go.id](https://pariwisatasolo.surakarta.go.id/).
-- Data geospasial diakses melalui [InaGeoportal](https://www.inageoportal.id/), menyediakan informasi geospasial Indonesia.
+- Data geospasial diakses melalui [InaGeoportal](https://www.inageoportal.id/).
+- Data icon diambil dari [SVG Repo](https://www.svgrepo.com/)
+- Desain antarmuka [Templates] (https://github.com/uideck/play-bootstrap)
 
 ## Tangkapan Layar Komponen Penting Produk
 
 1. **Antarmuka Utama:**
-   ![Antarmuka Utama](assets/img/landingpage.jpg)
+   ![Beranda](assets/img/landingpage.jpg)
 
-2. **Informasi Detail Lokasi:**
-   ![Informasi Detail Lokasi](screenshots/location_details.png)
+2. **Peta Persebaran:**
+   ![Peta Persebaran](assets/img/mapspage.jpg)
 
-3. **Peta Interaktif:**
-   ![Peta Interaktif](screenshots/interactive_map.png)
+3. **Informasi Lanjutan:**
+   ![Informasi](assets/img/keterangan.jpg)
 
 ## Demo Produk
 
