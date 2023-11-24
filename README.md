@@ -22,7 +22,7 @@ Solo Heritage Spot adalah  laman yang menampilkan informasi museum serta tempat 
 ## Tangkapan Layar Komponen Penting Produk
 
 1. **Antarmuka Utama:**
-   ![Antarmuka Utama](assets\img\landingpage.jpg)
+   ![Antarmuka Utama](assets/img/landingpage.jpg)
 
 2. **Informasi Detail Lokasi:**
    ![Informasi Detail Lokasi](screenshots/location_details.png)
