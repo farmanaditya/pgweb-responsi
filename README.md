@@ -4,7 +4,7 @@
 
 ## Deskripsi Produk
 
-Solo Heritage Spot adalah  laman yang menampilkan indormasi museum serta tempat bersejarah di kota Solo. Websitei memberikan informasi detail tentang lokasi-lokasi tersebut, termasuk deskripsi, jam operasional, dan fasilitas yang disediakan. Solo Heritage Spot dibangun untuk memenuhi tugas responsi praktikum Pemrograman Geospasial Web
+Solo Heritage Spot adalah  laman yang menampilkan informasi museum serta tempat bersejarah di kota Solo. Website memberikan informasi detail tentang lokasi-lokasi tersebut, termasuk deskripsi, jam operasional, dan fasilitas yang disediakan. Solo Heritage Spot dibangun untuk memenuhi tugas responsi praktikum Pemrograman Geospasial Web
 
 ## Komponen Pembangun Produk
 
@@ -22,7 +22,7 @@ Solo Heritage Spot adalah  laman yang menampilkan indormasi museum serta tempat 
 ## Tangkapan Layar Komponen Penting Produk
 
 1. **Antarmuka Utama:**
-   ![Antarmuka Utama](screenshots/main_interface.png)
+   ![Antarmuka Utama](assets\img\landingpage.jpg)
 
 2. **Informasi Detail Lokasi:**
    ![Informasi Detail Lokasi](screenshots/location_details.png)

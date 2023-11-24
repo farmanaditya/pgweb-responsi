@@ -1,366 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solo Heritage Spot | Persebaran Tempat Bersejarah di Kota Solo</title>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solo Heritage Spot | Persebaran Tempat Bersejarah di Kota Solo</title>
 
 
-    <!--====== Favicon Icon ======-->
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.svg"
-      type="image/svg"
-    />
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/svg" />
 
-    <!-- ===== All CSS files ===== -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" />
-    <link rel="stylesheet" href="assets/css/ud-styles.css" />
-  </head>
-  <body>
-    <!-- ====== Header Start ====== -->
-    <header class="ud-header">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <nav class="navbar navbar-expand-lg">
-              <a class="navbar-brand" href="index.html">
-                <img src="assets/images/favicon.svg" alt="Logo" style="width: 80px; height: 80px;" />
-              </a>
-              <button class="navbar-toggler">
-                <span class="toggler-icon"> </span>
-                <span class="toggler-icon"> </span>
-                <span class="toggler-icon"> </span>
-              </button>
+  <!-- ===== All CSS files ===== -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/animate.css" />
+  <link rel="stylesheet" href="assets/css/lineicons.css" />
+  <link rel="stylesheet" href="assets/css/ud-styles.css" />
 
-              <div class="navbar-collapse">
-                <ul id="nav" class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#home"> Beranda </a>
-                  </li>
+  <!-- Leaflet CSS Library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
 
-                  <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#about"> Tentang </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#contact"> Kontak </a>
-                  </li>
-                  <li class="nav-item nav-item-has-children">
-                    <a href="javascript:void(0)"> Halaman </a>
-                    <ul class="ud-submenu">
-                      <li class="ud-submenu-item">
-                        <a href="index.html" class="ud-submenu-link">
-                          Museum di Kota Solo
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="pricing.html" class="ud-submenu-link">
-                          Cagar Budaya di Kota Solo
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="contact.html" class="ud-submenu-link">
-                          Info Event 
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="blog.html" class="ud-submenu-link">
-                          Info Transportasi
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
+  <!-- Tab browser icon -->
+  <link rel="icon" type="image/x-icon" href=https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css>
 
-             
-    </header>
-    <!-- ====== Header End ====== -->
+  <!-- Search CSS Library -->
+  <link rel="stylesheet" href="assets/plugins/leaflet-search/leaflet-search.css" />
 
-    <!-- ====== Hero Start ====== -->
-    <section class="ud-hero" id="home">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
-              <h1 class="ud-hero-title">
-                Solo Heritage Spot, Persebaran Tempat Bersejarah di Kota Solo
-              </h1>
-              <p class="ud-hero-desc">
-                WebGIS ini dibangun untuk memenuhi tugas responsi praktikum Pemrograman Geospasial Web.
-              </p>
-              <ul class="ud-hero-buttons">
-                <li>
-                  <a href="index.html" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
-                    Go To Website
-                  </a>
+  <!-- Geolocation CSS Library for Plugin -->
+  <link rel="stylesheet"
+    href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css" />
+
+  <!-- Leaflet Mouse Position CSS Library -->
+  <link rel="stylesheet" href="assets/plugins/leaflet-mouseposition/L.Control.MousePosition.css" />
+
+  <!-- Leaflet Measure CSS Library -->
+  <link rel="stylesheet" href="assets/plugins/leaflet-measure/leaflet-measure.css" />
+
+  <!-- EasyPrint CSS Library -->
+  <link rel="stylesheet" href="assets/plugins/leaflet-easyprint/easyPrint.css" />
+
+
+
+  <style>
+    /* Body background color */
+    body {
+      background-color: #f8f9fa;
+      color: #495057;
+    }
+
+  
+    /* Hero section background color */
+    .ud-hero {
+      background-color: #1d4185;
+      color: #ffffff;
+    }
+  
+    /* Features section background color */
+    .ud-features {
+      background-color: #f8f9fa;
+      color: #495057;
+    }
+  
+   
+    /* Button styles */
+    .ud-main-btn {
+      background-color: #2855a7;
+      color: #ffffff;
+    }
+  
+    .ud-link-btn {
+      background-color: #2855a7;
+      color: #ffffff;
+    }
+
+    .ud-menu-scroll {
+      color: #c99a9a;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ====== Header Start ====== -->
+  <header class="ud-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="index.html">
+              <!-- <img src="assets/images/icon.svg" alt="Logo" style="width: 80px; height: 80px;" /> -->
+            </a>
+            <button class="navbar-toggler">
+              <span class="toggler-icon"> </span>
+              <span class="toggler-icon"> </span>
+              <span class="toggler-icon"> </span>
+            </button>
+
+            <div class="navbar-collapse">
+              <ul id="nav" class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a href="landingpage.html">Beranda</a>
+              </li>
+
+
+                <li class="nav-item">
+                  <a class="ud-menu-scroll" href="#about"> Tentang </a>
                 </li>
-                <li>
-                  <a href="https://github.com/uideck/play-bootstrap" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-link-btn">
-                    GitHub Repository<i class="lni lni-arrow-right"></i>
-                  </a>
+                <li class="nav-item">
+                  <a class="ud-menu-scroll" href="#contact"> Kontak </a>
+                </li>
+                <li class="nav-item nav-item-has-children">
+                  <a href="javascript:void(0)"> Halaman </a>
+                  <ul class="ud-submenu">
+                    <li class="ud-submenu-item">
+                      <a href="museum.html" class="ud-submenu-link">
+                        Museum di Kota Solo
+                      </a>
+                    </li>
+                    <li class="ud-submenu-item">
+                      <a href="cagarbudaya.html" class="ud-submenu-link">
+                        Cagar Budaya di Kota Solo
+                      </a>
+                    </li>
+                    <li class="ud-submenu-item">
+                      <a href="contact.html" class="ud-submenu-link">
+                        Info Event
+                      </a>
+                    </li>
+                    <li class="ud-submenu-item">
+                      <a href="transportasi.html" class="ud-submenu-link">
+                        Info Transportasi
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>
-            <div
-              class="ud-hero-brands-wrapper wow fadeInUp"
-              data-wow-delay=".3s"
-            >
-              <img src="assets/images/hero/brand.svg" alt="brand" />
+
+
+  </header>
+  <!-- ====== Header End ====== -->
+
+  <!-- ====== Hero Start ====== -->
+  <section class="ud-hero" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
+            <h1 class="ud-hero-title">
+              Solo Heritage Spot, Persebaran Tempat Bersejarah di Kota Solo
+            </h1>
+            <p class="ud-hero-desc">
+              WebGIS ini dibangun untuk memenuhi tugas responsi praktikum Pemrograman Geospasial Web.
+            </p>
+            <ul class="ud-hero-buttons">
+              <li>
+                <a href="index.html" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
+                  Go To Website
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/farmanaditya/pgweb-responsi" rel="nofollow noopener" target="_blank"
+                  class="ud-main-btn ud-link-btn">
+                  GitHub Repository<i class="lni lni-arrow-right"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="ud-hero-brands-wrapper wow fadeInUp" data-wow-delay=".3s">
+            <img src="assets/images/hero/dotted-shape.svg" alt="brand" />
+          </div>
+          
+          <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
+            <!-- <img src="assets/images/hero/hero-image.svg" alt="hero-image" /> -->
+            <img src="assets/images/hero/dotted-shape.svg" alt="shape" class="shape shape-1" />
+            <img src="assets/images/hero/dotted-shape.svg" alt="shape" class="shape shape-2" />
+            <img src="assets/images/hero/dotted-shape.svg" alt="shape" class="shape shape-3" />
+          </div>
+          
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ====== Hero End ====== -->
+
+  <!-- ====== Features Start ====== -->
+  <section id="features" class="ud-features">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ud-section-title">
+            <!-- <span>Features</span> -->
+            <h2>Komponen Pembangun Produk</h2>
+            <p>
+              WebGIS dibangun dengan beberapa komponen pembangun produk
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Existing Feature 1 -->
+        <div class="col-xl-3 col-lg-3 col-sm-6">
+          <div class="ud-single-feature wow fadeInUp" data-wow-delay=".25s">
+            <div class="ud-feature-icon">
+              <i class="lni lni-layers"></i>
             </div>
-            <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-              <!-- <img src="assets/images/hero/hero-image.svg" alt="hero-image" /> -->
-              <img
-                src="assets/images/hero/dotted-shape.svg"
-                alt="shape"
-                class="shape shape-1"
-              />
-              <img
-                src="assets/images/hero/dotted-shape.svg"
-                alt="shape"
-                class="shape shape-1"
-              />
+            <div class="ud-feature-content">
+              <h3 class="ud-feature-title">Leaflet JS</h3>
+              <p class="ud-feature-desc">
+                Lorem Ipsum is simply dummy text of the printing and industry.
+              </p>
+              <a href="javascript:void(0)" class="ud-feature-link">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Existing Feature 2 -->
+        <div class="col-xl-3 col-lg-3 col-sm-6">
+          <div class="ud-single-feature wow fadeInUp" data-wow-delay=".15s">
+            <div class="ud-feature-icon">
+              <i class="lni lni-move"></i>
+            </div>
+            <div class="ud-feature-content">
+              <h3 class="ud-feature-title">Geoserver</h3>
+              <p class="ud-feature-desc">
+                Lorem Ipsum is simply dummy text of the printing and industry.
+              </p>
+              <a href="javascript:void(0)" class="ud-feature-link">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Existing Feature 3 -->
+        <div class="col-xl-3 col-lg-3 col-sm-6">
+          <div class="ud-single-feature wow fadeInUp" data-wow-delay=".2s">
+            <div class="ud-feature-icon">
+              <i class="lni lni-layout"></i>
+            </div>
+            <div class="ud-feature-content">
+              <h3 class="ud-feature-title">Bootstrap</h3>
+              <p class="ud-feature-desc">
+                Lorem Ipsum is simply dummy text of the printing and industry.
+              </p>
+              <a href="javascript:void(0)" class="ud-feature-link">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- New Feature for JavaScript -->
+        <div class="col-xl-3 col-lg-3 col-sm-6">
+          <div class="ud-single-feature wow fadeInUp" data-wow-delay=".3s">
+            <div class="ud-feature-icon">
+              <i class="lni lni-code"></i> <!-- Assuming lni-code represents JavaScript icon -->
+            </div>
+            <div class="ud-feature-content">
+              <h3 class="ud-feature-title">JavaScript</h3>
+              <p class="ud-feature-desc">
+                JavaScript is a powerful scripting language for building interactive websites.
+              </p>
+              <a href="javascript:void(0)" class="ud-feature-link">
+                Learn More
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- ====== Hero End ====== -->
+      
+  </section>
+  <!-- ====== Features End ====== -->
 
-    <!-- ====== Features Start ====== -->
-    <section id="features" class="ud-features">
+  <!-- ====== About Start ====== -->
+  <section id="about" class="ud-about">
+    <div class="container">
+      <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+        <div class="ud-about-content-wrapper">
+          <div class="ud-about-content">
+            <span class="tag">About Us</span>
+            <h2>Brilliant Toolkit to Build Nextgen Website Faster.</h2>
+            <p>
+              The main ‘thrust’ is to focus on educating attendees on how to
+              best protect highly vulnerable business applications with
+              interactive panel discussions and roundtables led by subject
+              matter experts.
+            </p>
+
+            <p>
+              The main ‘thrust’ is to focus on educating attendees on how to
+              best protect highly vulnerable business applications with
+              interactive panel.
+            </p>
+            <a href="javascript:void(0)" class="ud-main-btn">Learn More</a>
+          </div>
+        </div>
+        <div class="ud-about-image">
+          <img src="assets/images/about/about-image.svg" alt="about-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ====== About End ====== -->
+
+
+
+  <!-- ====== Contact Start ====== -->
+  <section id="contact" class="ud-contact">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-xl-8 col-lg-7">
+          <div class="ud-contact-content-wrapper">
+            <div class="ud-contact-title">
+              <span>Info Kontak</span>
+              <h2>
+                Let’s talk about <br />
+                Love to hear from you!
+              </h2>
+            </div>
+            <div class="ud-contact-info-wrapper">
+              <div class="ud-single-info">
+                <div class="ud-info-icon">
+                  <i class="lni lni-map-marker"></i>
+                </div>
+                <div class="ud-info-meta">
+                  <h6>Sistem Informasi Geografis</h6>
+                  <h5>Universitas Gadjah Mada</h5>
+
+                </div>
+              </div>
+              <div class="ud-single-info">
+                <div class="ud-info-icon">
+                  <i class="lni lni-envelope"></i>
+                </div>
+                <div class="ud-info-meta">
+                  <h6>Email</h6>
+                  <h6>farmanaalya21@gmail.com</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-5">
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- ====== Contact End ====== -->
+
+  <!-- ====== Footer Start ====== -->
+  <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+    <div class="shape shape-1">
+      <img src="assets/images/footer/shape-1.svg" alt="shape" />
+    </div>
+    <div class="shape shape-2">
+      <img src="assets/images/footer/shape-2.svg" alt="shape" />
+    </div>
+    <div class="shape shape-3">
+      <img src="assets/images/footer/shape-3.svg" alt="shape" />
+    </div>
+    <div class="ud-footer-widgets">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-section-title">
-              <span>Features</span>
-              <h2>Komponen Pembangun Produk</h2>
-              <p>
-                WebGIS dibangun dengan beberapa komponen pembangun produk 
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            <div class="ud-widget">
+              <p class="ud-widget-desc">
+                Solo Heritage Spot
               </p>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xl-3 col-lg-3 col-sm-6">
-            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".25s">
-                <div class="ud-feature-icon">
-                  <i class="lni lni-layers"></i>
-                </div>
-                <div class="ud-feature-content">
-                  <h3 class="ud-feature-title">Leaflet JS</h3>
-                  <p class="ud-feature-desc">
-                    Lorem Ipsum is simply dummy text of the printing and industry.
-                  </p>
-                  <a href="javascript:void(0)" class="ud-feature-link">
-                    Learn More
-                  </a>
-                </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-3 col-sm-6">
-            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".15s">
-              <div class="ud-feature-icon">
-                <i class="lni lni-move"></i>
-              </div>
-              <div class="ud-feature-content">
-                <h3 class="ud-feature-title">Geoserver</h3>
-                <p class="ud-feature-desc">
-                  Lorem Ipsum is simply dummy text of the printing and industry.
-                </p>
-                <a href="javascript:void(0)" class="ud-feature-link">
-                  Learn More
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-3 col-sm-6">
-            <div class="ud-single-feature wow fadeInUp" data-wow-delay=".2s">
-              <div class="ud-feature-icon">
-                <i class="lni lni-layout"></i>
-              </div>
-              <div class="ud-feature-content">
-                <h3 class="ud-feature-title">Bootstrap</h3>
-                <p class="ud-feature-desc">
-                  Lorem Ipsum is simply dummy text of the printing and industry.
-                </p>
-                <a href="javascript:void(0)" class="ud-feature-link">
-                  Learn More
-                </a>
-              </div>
-            </div>
-          </div>
+          </ul>
         </div>
       </div>
-    </section>
-    <!-- ====== Features End ====== -->
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </footer>
+  <!-- ====== Footer End ====== -->
 
-    <!-- ====== About Start ====== -->
-    <section id="about" class="ud-about">
-      <div class="container">
-        <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
-          <div class="ud-about-content-wrapper">
-            <div class="ud-about-content">
-              <span class="tag">About Us</span>
-              <h2>Brilliant Toolkit to Build Nextgen Website Faster.</h2>
-              <p>
-                The main ‘thrust’ is to focus on educating attendees on how to
-                best protect highly vulnerable business applications with
-                interactive panel discussions and roundtables led by subject
-                matter experts.
-              </p>
+  <!-- ====== Back To Top Start ====== -->
+  <a href="javascript:void(0)" class="back-to-top">
+    <i class="lni lni-chevron-up"> </i>
+  </a>
+  <!-- ====== Back To Top End ====== -->
 
-              <p>
-                The main ‘thrust’ is to focus on educating attendees on how to
-                best protect highly vulnerable business applications with
-                interactive panel.
-              </p>
-              <a href="javascript:void(0)" class="ud-main-btn">Learn More</a>
-            </div>
-          </div>
-          <div class="ud-about-image">
-            <img src="assets/images/about/about-image.svg" alt="about-image" />
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ====== About End ====== -->
+  <!-- ====== All Javascript Files ====== -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // ==== for menu scroll
+    const pageLink = document.querySelectorAll(".ud-menu-scroll");
 
-
-
-    <!-- ====== Contact Start ====== -->
-    <section id="contact" class="ud-contact">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-xl-8 col-lg-7">
-            <div class="ud-contact-content-wrapper">
-              <div class="ud-contact-title">
-                <span>Info Kontak</span>
-                <h2>
-                  Let’s talk about <br />
-                  Love to hear from you!
-                </h2>
-              </div>
-              <div class="ud-contact-info-wrapper">
-                <div class="ud-single-info">
-                  <div class="ud-info-icon">
-                    <i class="lni lni-map-marker"></i>
-                  </div>
-                  <div class="ud-info-meta">
-                    <h6>Sistem Informasi Geografis</h6>
-                    <h5>Universitas Gadjah Mada</h5>
-                    
-                  </div>
-                </div>
-                <div class="ud-single-info">
-                  <div class="ud-info-icon">
-                    <i class="lni lni-envelope"></i>
-                  </div>
-                  <div class="ud-info-meta">
-                    <h6>Email</h6>
-                    <h6>farmanaalya21@gmail.com</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-5">
-            
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ====== Contact End ====== -->
-
-    <!-- ====== Footer Start ====== -->
-    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
-      <div class="shape shape-1">
-        <img src="assets/images/footer/shape-1.svg" alt="shape" />
-      </div>
-      <div class="shape shape-2">
-        <img src="assets/images/footer/shape-2.svg" alt="shape" />
-      </div>
-      <div class="shape shape-3">
-        <img src="assets/images/footer/shape-3.svg" alt="shape" />
-      </div>
-      <div class="ud-footer-widgets">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="ud-widget">
-                <p class="ud-widget-desc">
-                    Solo Heritage Spot 
-                </p>
-              </div>
-            </div>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- ====== Footer End ====== -->
-
-    <!-- ====== Back To Top Start ====== -->
-    <a href="javascript:void(0)" class="back-to-top">
-      <i class="lni lni-chevron-up"> </i>
-    </a>
-    <!-- ====== Back To Top End ====== -->
-
-    <!-- ====== All Javascript Files ====== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-      // ==== for menu scroll
-      const pageLink = document.querySelectorAll(".ud-menu-scroll");
-
-      pageLink.forEach((elem) => {
-        elem.addEventListener("click", (e) => {
-          e.preventDefault();
-          document.querySelector(elem.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-            offsetTop: 1 - 60,
-          });
+    pageLink.forEach((elem) => {
+      elem.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelector(elem.getAttribute("href")).scrollIntoView({
+          behavior: "smooth",
+          offsetTop: 1 - 60,
         });
       });
+    });
 
-      // section menu active
-      function onScroll(event) {
-        const sections = document.querySelectorAll(".ud-menu-scroll");
-        const scrollPos =
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          document.body.scrollTop;
+    // section menu active
+    function onScroll(event) {
+      const sections = document.querySelectorAll(".ud-menu-scroll");
+      const scrollPos =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
 
-        for (let i = 0; i < sections.length; i++) {
-          const currLink = sections[i];
-          const val = currLink.getAttribute("href");
-          const refElement = document.querySelector(val);
-          const scrollTopMinus = scrollPos + 73;
-          if (
-            refElement.offsetTop <= scrollTopMinus &&
-            refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
-          ) {
-            document
-              .querySelector(".ud-menu-scroll")
-              .classList.remove("active");
-            currLink.classList.add("active");
-          } else {
-            currLink.classList.remove("active");
-          }
+      for (let i = 0; i < sections.length; i++) {
+        const currLink = sections[i];
+        const val = currLink.getAttribute("href");
+        const refElement = document.querySelector(val);
+        const scrollTopMinus = scrollPos + 73;
+        if (
+          refElement.offsetTop <= scrollTopMinus &&
+          refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+        ) {
+          document
+            .querySelector(".ud-menu-scroll")
+            .classList.remove("active");
+          currLink.classList.add("active");
+        } else {
+          currLink.classList.remove("active");
         }
       }
+    }
 
-      window.document.addEventListener("scroll", onScroll);
-    </script>
-  </body>
+    window.document.addEventListener("scroll", onScroll);
+  </script>
+</body>
+
 </html>
