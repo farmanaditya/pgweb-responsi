@@ -1,10 +1,12 @@
 # pgweb-responsi
 
+
+## Demo Produk
+(https://farmanaditya.github.io/pgweb-responsi/)
+
 # Solo Heritage Spot
 
-## Deskripsi Produk
-
-Solo Heritage Spot adalah  laman yang menampilkan informasi museum serta tempat bersejarah di kota Solo. Website memberikan informasi detail tentang lokasi-lokasi tersebut, termasuk deskripsi, jam operasional, dan fasilitas yang disediakan. Solo Heritage Spot dibangun untuk memenuhi tugas responsi praktikum Pemrograman Geospasial Web
+Solo Heritage Spot adalah  laman yang menampilkan informasi museum serta tempat bersejarah di kota Solo.WebGIS Solo Heritage Spot dibuat karena banyaknya tempat bersejarah di Kota Solo yang kurang dikenal oleh banyak orang. Dengan menggunakan peta interaktif, website ini membantu orang untuk menemukan dan memahami lebih banyak tentang tempat bersejarah dan tempat menarik lainnya di kota ini. Solo Heritage Spot dibangun untuk memenuhi tugas responsi praktikum Pemrograman Geospasial Web
 
 ## Komponen Pembangun Produk
 
@@ -19,7 +21,7 @@ Solo Heritage Spot adalah  laman yang menampilkan informasi museum serta tempat 
 - Data tentang museum dan tempat bersejarah diambil dari [pariwisatasolo.surakarta.go.id](https://pariwisatasolo.surakarta.go.id/).
 - Data geospasial diakses melalui [InaGeoportal](https://www.inageoportal.id/).
 - Data icon diambil dari [SVG Repo](https://www.svgrepo.com/)
-- Desain antarmuka [Templates] (https://github.com/uideck/play-bootstrap)
+- Desain antarmuka [Templates](https://github.com/uideck/play-bootstrap)
 
 ## Tangkapan Layar Komponen Penting Produk
 
@@ -32,6 +34,8 @@ Solo Heritage Spot adalah  laman yang menampilkan informasi museum serta tempat 
 3. **Informasi Lanjutan:**
    ![Informasi](assets/img/keterangan.jpg)
 
-## Demo Produk
+
+
+
 
 
