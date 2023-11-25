@@ -328,8 +328,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <div id="map" style="height: 200px;"></div>
 
-    <!-- Search JavaScript Library -->
-    <script src="assets/plugins/leaflet-search/leaflet-search.js"></script>
 
     <!-- Geolocation Javascript Library -->
     <script
@@ -338,17 +336,9 @@
     <!-- Leaflet Mouse Position JavaScript Library -->
     <script src="assets/plugins/leaflet-mouseposition/L.Control.MousePosition.js"></script>
 
-    <!-- Leaflet Measure JavaScript Library -->
-    <script src="assets/plugins/leaflet-measure/leaflet-measure.js"></script>
-
     <!-- EasyPrint JavaScript Library -->
     <script src="assets/plugins/leaflet-easyprint/leaflet.easyPrint.js"></script>
 
-    <!-- Marker Cluster JS -->
-    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-
-    <!-- Routing JS -->
-    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 
     <script>
 
@@ -393,7 +383,10 @@
         var pers = L.marker([-7.564814376968936, 110.81836702919941]).addTo(map);
         pers.bindPopup("<b>Monumen Pers Nasional</b><br>Jl. Gajahmada No.59, Timuran, Banjarsari, Surakarta").openPopup();
 
-        
+        var samanhudi = L.marker([-7.566359400776344, 110.79731560831081]).addTo(map);
+        samanhudi.bindPopup("<b>Museum Samanhoedi</b><br>Jl. K.H Samanhudi No.75, Sondakan, Laweyan, Surakarta").openPopup();
+
+
         // Basemap
         var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="DIVSIG UGM" target="_blank">DIVSIG UGM</a>'
@@ -456,17 +449,17 @@
                     // "Jumlah Aktif : " + feature.properties.aktif + "<br>"
                     // "Jumlah Sembuh : " + feature.properties.sembuh + "<br>"
                     // "Jumlah Meninggal : " + feature.properties.meninggal + "<br>"
-               layer.on({
-                    click: function (e) {
-                        wfsgeoserver.bindPopup(content);
-                    },
-                    mouseover: function (e) {
-                        wfsgeoserver.bindTooltip(feature.properties.kecamatan);
-                    },
-                    mouseout: function (e) {
-                        wfsgeoserver.closePopup();
-                    }
-                });
+                    layer.on({
+                        click: function (e) {
+                            wfsgeoserver.bindPopup(content);
+                        },
+                        mouseover: function (e) {
+                            wfsgeoserver.bindTooltip(feature.properties.kecamatan);
+                        },
+                        mouseout: function (e) {
+                            wfsgeoserver.closePopup();
+                        }
+                    });
             }
         });
 
@@ -479,33 +472,6 @@
     </script>
 </body>
 
-
-<!-- Plugin Search -->
-<script>
-    var searchControl = new L.Control.Search({
-        position: "topleft",
-        layer: wfsgeoserver,
-        propertyName: "kecamatan",
-        marker: false,
-        moveToLocation: function (latlng, title, map) {
-            var zoom = map.getBoundsZoom(latlng.layer.getBounds());
-            map.setView(latlng, zoom);
-        },
-    });
-    searchControl
-        .on("search:locationfound", function (e) {
-            e.layer.setStyle({
-                fillColor: "#ffff00",
-                color: "#0000ff",
-            });
-        })
-        .on("search:collapse", function (e) {
-            featuresLayer.eachLayer(function (layer) {
-                featuresLayer.resetStyle(layer);
-            });
-        });
-    map.addControl(searchControl);
-</script>
 
 <!-- Plugin Geolocation -->
 <script
@@ -553,22 +519,6 @@
     }).addTo(map);
 </script>
 
-
-<!-- Plugin Measurement Tool -->
-<script src="assets/plugins/leaflet-measure/leaflet-measure.js"></script>
-<script>
-    var measureControl = new L.Control.Measure({
-        position: 'topleft',
-        primaryLengthUnit: 'meters',
-        secondaryLengthUnit: 'kilometers',
-        primaryAreaUnit: 'hectares',
-        secondaryAreaUnit: 'sqmeters',
-        activeColor: '#FF0000',
-        completedColor: '#00FF00'
-    });
-
-    measureControl.addTo(map);
-</script>
 
 <!-- Plugin Easy Print -->
 <script src="assets/plugins/leaflet-easyprint/leaflet.easyPrint.js"></script>
@@ -667,4 +617,5 @@
 
     window.document.addEventListener("scroll", onScroll);
 </script>
-</html >
+
+</html>

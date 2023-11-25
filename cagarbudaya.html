@@ -161,11 +161,11 @@
                                                 Cagar Budaya di Kota Solo
                                             </a>
                                         </li>
-                                        <li class="ud-submenu-item">
+                                        <!-- <li class="ud-submenu-item">
                                             <a href="contact.html" class="ud-submenu-link">
                                                 Info Event
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </li>
                             </ul>
@@ -202,7 +202,7 @@
 
 
     <!-- ====== Features Start ====== -->
-    <section id="pricing" class="ud-pricing">
+    <section id="informasi" class="ud-informasi">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -523,33 +523,6 @@
 </body>
 
 
-<!-- Plugin Search -->
-<script>
-    var searchControl = new L.Control.Search({
-        position: "topleft",
-        layer: wfsgeoserver,
-        propertyName: "kecamatan",
-        marker: false,
-        moveToLocation: function (latlng, title, map) {
-            var zoom = map.getBoundsZoom(latlng.layer.getBounds());
-            map.setView(latlng, zoom);
-        },
-    });
-    searchControl
-        .on("search:locationfound", function (e) {
-            e.layer.setStyle({
-                fillColor: "#ffff00",
-                color: "#0000ff",
-            });
-        })
-        .on("search:collapse", function (e) {
-            featuresLayer.eachLayer(function (layer) {
-                featuresLayer.resetStyle(layer);
-            });
-        });
-    map.addControl(searchControl);
-</script>
-
 <!-- Plugin Geolocation -->
 <script
     src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js"></script>
@@ -595,33 +568,6 @@
         prefix: 'Koordinat : '
     }).addTo(map);
 </script>
-
-
-<!-- Plugin Measurement Tool -->
-<script src="assets/plugins/leaflet-measure/leaflet-measure.js"></script>
-<script>
-    var measureControl = new L.Control.Measure({
-        position: 'topleft',
-        primaryLengthUnit: 'meters',
-        secondaryLengthUnit: 'kilometers',
-        primaryAreaUnit: 'hectares',
-        secondaryAreaUnit: 'sqmeters',
-        activeColor: '#FF0000',
-        completedColor: '#00FF00'
-    });
-
-    measureControl.addTo(map);
-</script>
-
-<!-- Plugin Easy Print -->
-<script src="assets/plugins/leaflet-easyprint/leaflet.easyPrint.js"></script>
-<script>
-    L.easyPrint({
-        title: 'Print'
-    }).addTo(map);
-</script>
-
-
 </script>
 
 <!-- ====== Footer Start ====== -->
